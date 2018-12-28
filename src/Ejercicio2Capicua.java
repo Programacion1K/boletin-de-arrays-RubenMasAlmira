@@ -13,17 +13,25 @@ public class Ejercicio2Capicua {
 
     public static int[]EArray(int longuitud){
         int[] array=new int[longuitud];
-        for(int i=0;i<=longuitud;i++){
+        for(int i=0;i<=longuitud-1;i++){
             array[i]=Integer.parseInt(JOptionPane.showInputDialog("Introduce el valor de la posición "+i+ " del vector:"));
         }
         return array;
     }
 
     public static boolean capicua(int[] array){
-        boolean capicua=true;
-        for(int n:array){
-            if(){}
+        int principio=0;
+        int ultimo=array.length-1;
+        while (true){
+            if(array[principio]!=array[ultimo]){
+                return false;
+            }
+            principio++;
+            ultimo--;
+            if(principio>ultimo){
+                return true;
+            }
         }
-        return capicua;
+
     }
 }
