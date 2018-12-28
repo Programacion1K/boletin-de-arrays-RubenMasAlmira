@@ -23,7 +23,7 @@ si son proporcionales o no. (Dos vectores son proporcionale
 s si uno de ellos es el resultado de multiplicar por
 un mismo factor todos los elementos del otro). Si los vectore
 s proporcionados no tienen la misma longitud, se
-ha de escribir en pantalla un mensaje indicándolo
+ha de escribir en pantalla un mensaje indicándolo.
 
 ## Ejercicio 4
 Desarrollar un programa en el que se pida al usuario un vector

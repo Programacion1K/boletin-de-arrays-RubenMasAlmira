@@ -4,7 +4,7 @@ public class Ejercicio3Proporcionales {
     public static void main(String[] args) {
         int[] primerArray=EArray(Integer.parseInt(JOptionPane.showInputDialog("Introduce la longuitud del vector a comprobar:")));
         int[] segundoArray=EArray(Integer.parseInt(JOptionPane.showInputDialog("Introduce la longuitud del vector a comprobar:")));
-
+        //Pausa del ejercicio para hacer el de las IP
 
 
 
@@ -18,4 +18,5 @@ public class Ejercicio3Proporcionales {
         }
         return array;
     }
+
 }
