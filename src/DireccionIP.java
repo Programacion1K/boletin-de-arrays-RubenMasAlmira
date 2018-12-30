@@ -14,25 +14,38 @@ public class DireccionIP {
     private int[] IPDeRed;
     private int[] MascaraDeRed;
     private String PrivadaPublica;
-    //todo hay que completar los constructores con los demas datos a partir de los metodos
+    //todo hay que completar los constructores con los demas datos
 
     DireccionIP(int[]IP){
         this.IP=IP;
 
     }
-//ERROR
+
     DireccionIP(int primerOcteto,int segundoOcteto,int tercerOcteto,int cuartoOcteto){
-        primerOcteto=IP[0];
-        segundoOcteto=IP[1];
-        tercerOcteto=IP[2];
-        cuartoOcteto=IP[3];
+        IP[0]=primerOcteto;
+        IP[1]=segundoOcteto;
+        IP[2]=tercerOcteto;
+        IP[3]=cuartoOcteto;
     }
-//ERROR
-    public static String infoIP(DireccionIP IP){
-        return IP.getIP();
+
+    DireccionIP(String IPASeparar){
+        IP=convertirStringEnArrayDeInt(IPASeparar);
     }
-//ERROR
-    public String getIP(){
-        return Arrays.toString(IP);
+
+
+    //Metodo para convertir un String en un array de enteros
+    private int[] convertirStringEnArrayDeInt(String IPASeparar){
+        int[] IP=new int[LONGITUD_DE_LA_IP];
+        int IPIntroducidas=0;
+        int posicionDelUltimoPunto=0;
+        for(int i=0;i<IPASeparar.length()-1;i++){
+            for(int j=0;j<IP.length-1;j++){
+                if(IPASeparar.charAt(i)=='.'){
+                    IP[j]=Integer.parseInt(IPASeparar.substring(posicionDelUltimoPunto,i));
+                    posicionDelUltimoPunto=i;
+                }
+            }
+        }
+        return IP;
     }
 }
