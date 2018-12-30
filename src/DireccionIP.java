@@ -29,9 +29,16 @@ public class DireccionIP {
     }
 
     DireccionIP(String IPASeparar){
-        IP=convertirStringEnArrayDeInt(IPASeparar);
+        System.out.println(IP = convertirStringEnArrayDeInt(IPASeparar));
     }
-
+    //ERROR
+    public static String infoIP(DireccionIP IP){
+        return IP.getIP();
+    }
+    //ERROR
+    public String getIP(){
+        return Arrays.toString(IP);
+    }
 
     //Metodo para convertir un String en un array de enteros
     private int[] convertirStringEnArrayDeInt(String IPASeparar){
