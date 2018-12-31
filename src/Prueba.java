@@ -1,3 +1,4 @@
+//Clase para solucionar errores con los metodos de la clase DireccionIP
 import java.util.Arrays;
 
 public class Prueba {
@@ -7,6 +8,7 @@ public class Prueba {
         //System.out.println(Arrays.toString(IP));
 
     }
+    //Metodo para convertir un String en un array de enteros
     private static int[] convertirStringEnArrayDeInt(String IPASeparar){
         int[] IP=new int[4];
         for(int i=0;i<3;i++){
@@ -16,16 +18,6 @@ public class Prueba {
                 IP[3]=Integer.parseInt(IPASeparar);
             }
         }
-        /* int IPIntroducidas=0;
-        int posicionDelUltimoPunto=0;
-        int j=0;
-       for(int i=0;i<IPASeparar.length()-1;i++){
-                if(IPASeparar.charAt(i)=='.'){
-                    IP[j]=Integer.parseInt(IPASeparar.substring(posicionDelUltimoPunto,i));
-                    posicionDelUltimoPunto=i;
-                    j++;
-                }
-        }*/
         return IP;
     }
 }
