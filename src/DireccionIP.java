@@ -43,7 +43,7 @@ public class DireccionIP {
     }
 
     //Metodo para convertir un String en un array de enteros
-    private static int[] convertirStringEnArrayDeInt(String IPASeparar) {
+    private int[] convertirStringEnArrayDeInt(String IPASeparar) {
         int[] IP = new int[4];
         for (int i = 0; i < 3; i++) {
             IP[i] = Integer.parseInt(IPASeparar.substring(0, IPASeparar.indexOf('.')));
