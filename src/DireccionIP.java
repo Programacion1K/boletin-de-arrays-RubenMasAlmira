@@ -28,7 +28,7 @@ public class DireccionIP {
         this.IP = convertirStringEnArrayDeInt(IPASeparar);
 
     }
-
+//Error,los métodos de Obtener no salen como deberían
     public String infoIP(){
         String salida="";
         salida+="Dirección IP: "+getIP()+"\n";
