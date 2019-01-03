@@ -29,6 +29,28 @@ public class DireccionIP {
 
     }
 
+    public String infoIP(){
+        String salida="";
+        salida+="Dirección IP: "+getIP()+"\n";
+        salida+="Id de Red: "+obtenerIdDeRed(IP)+"\n";
+        salida+="Máscara de Red "+obtenerMascara(IP)+"\n";
+        salida+="¿Es privada?: "+"\n";
+        salida+="Clase: "+obtenerClase(IP)+"\n";
+        salida+="¿Id de Red?: "+"\n";
+        return salida;
+    }
+
+
+
+
+    public String getIP(){
+        return Arrays.toString(IP);
+    }
+    @Override
+    public String toString(){
+        return "IP:"+getIP();
+    }
+
 
 
 
