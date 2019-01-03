@@ -29,16 +29,11 @@ public class DireccionIP {
 
     }
 
-    //ERROR
-    public static String infoIP(DireccionIP IP) {
-        return IP.getIP();
-    }
 
-    //ERROR
-    public String getIP() {
 
-        return Arrays.toString(IP);
-    }
+
+
+
 
     //Método para convertir un String en un array de enteros
     private int[] convertirStringEnArrayDeInt(String IPASeparar) {
@@ -78,14 +73,21 @@ public class DireccionIP {
     //Método para obtener la Mascara de Red
     private int[] obtenerMascara(int[] IP){
         if (obtenerClase(IP)=='A'){
-            return
+            int[] Mascara={255,0,0,0};
+            return Mascara;
         }
         if(obtenerClase(IP)=='B'){
-            return
+            int[] Mascara={255,255,0,0};
+            return Mascara;
         }
         if(obtenerClase(IP)=='C'){
-            return
+            int[] Mascara={255,255,255,0};
+            return Mascara;
         }
+        int[] Mascara={0,0,0,0};
+        return Mascara;
     }
+
+    //Método para obtener
 
 }
