@@ -61,7 +61,7 @@ public class DireccionIP {
     //Método para convertir un String en un array de enteros
     private int[] convertirStringEnArrayDeInt(String IPASeparar) {
         int[] IP = new int[LONGITUD_DE_LA_IP];
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < IP.length-1; i++) {
             IP[i] = Integer.parseInt(IPASeparar.substring(0, IPASeparar.indexOf('.')));
             IPASeparar = IPASeparar.substring(IPASeparar.indexOf('.') + 1, IPASeparar.length());
             if (IPASeparar.indexOf('.') == -1) {
@@ -75,9 +75,19 @@ public class DireccionIP {
     private int[] obtenerIdDeRed(int[]IP){
         int[] IdDeRed = new int[LONGITUD_DE_LA_IP];
         IdDeRed=IP.clone();
-        IdDeRed[1]=0;
-        IdDeRed[2]=0;
-        IdDeRed[3]=0;
+        if(obtenerClase(IdDeRed)=='A'){
+            IdDeRed[1]=0;
+            IdDeRed[2]=0;
+            IdDeRed[3]=0;
+            return IdDeRed;
+        }else if(obtenerClase(IdDeRed)=='B'){
+            IdDeRed[2]=0;
+            IdDeRed[3]=0;
+            return IdDeRed;
+        }else if(obtenerClase(IdDeRed)=='C'){
+            IdDeRed[3]=0;
+            return IdDeRed;
+        }
         return IdDeRed;
     }
 

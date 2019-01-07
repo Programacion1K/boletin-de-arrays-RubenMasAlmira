@@ -6,7 +6,7 @@ public class PruebaDireccionesIP {
        int[]IP={192,168,10,2};
        //DireccionIP IPConArray=new DireccionIP(IP);
        //DireccionIP IPConEnteros=new DireccionIP(192,168,10,2);
-       DireccionIP IPConString= new DireccionIP("1.0.0.2");
+       DireccionIP IPConString= new DireccionIP("192.168.5.4");
         //JOptionPane.showMessageDialog(null,IPConArray.infoIP());
         //JOptionPane.showMessageDialog(null,IPConEnteros.infoIP());
         JOptionPane.showMessageDialog(null,IPConString.infoIP());
