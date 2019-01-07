@@ -28,12 +28,13 @@ public class DireccionIP {
         this.IP = convertirStringEnArrayDeInt(IPASeparar);
 
     }
+
 //Error,los métodos de Obtener no salen como deberían
     public String infoIP(){
         String salida="";
         salida+="Dirección IP: "+getIP()+"\n";
-        salida+="Id de Red: "+obtenerIdDeRed(IP)+"\n";
-        salida+="Máscara de Red "+obtenerMascara(IP)+"\n";
+        salida+="Id de Red: "+Arrays.toString(obtenerIdDeRed(IP))+"\n";
+        salida+="Máscara de Red "+Arrays.toString(obtenerMascara(IP))+"\n";
         salida+="¿Es privada?: "+"\n";
         salida+="Clase: "+obtenerClase(IP)+"\n";
         salida+="¿Id de Red?: "+"\n";
