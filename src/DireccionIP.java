@@ -32,9 +32,9 @@ public class DireccionIP {
 //Error,los métodos de Obtener no salen como deberían
     public String infoIP(){
         String salida="";
-        salida+="Dirección IP: "+getIP()+"\n";
-        salida+="Id de Red: "+Arrays.toString(obtenerIdDeRed(IP))+"\n";
-        salida+="Máscara de Red "+Arrays.toString(obtenerMascara(IP))+"\n";
+        salida+="Dirección IP: "+IP.toString()+"\n";
+        salida+="Id de Red: "+obtenerIdDeRed(IP).toString()+"\n";
+        salida+="Máscara de Red :"+toString((obtenerMascara(IP)))+"\n";
         salida+="¿Es privada?: "+"\n";
         salida+="Clase: "+obtenerClase(IP)+"\n";
         salida+="¿Id de Red?: "+"\n";
@@ -47,9 +47,10 @@ public class DireccionIP {
     public String getIP(){
         return Arrays.toString(IP);
     }
-    @Override
+
     public String toString(){
-        return "IP:"+getIP();
+        String salida=IP[0]+"."+IP[1]+"."+IP[2]+"."+IP[3];
+        return salida;
     }
 
 
@@ -72,22 +73,26 @@ public class DireccionIP {
     }
 
     //Método para obtener la IdDeRed
-    private int[] obtenerIdDeRed(int[]IP){
-        int[] IdDeRed = new int[LONGITUD_DE_LA_IP];
-        IdDeRed=IP.clone();
-        if(obtenerClase(IdDeRed)=='A'){
-            IdDeRed[1]=0;
-            IdDeRed[2]=0;
-            IdDeRed[3]=0;
+    private DireccionIP obtenerIdDeRed(int[]IP){
+        int[] IdDeRedArray = new int[LONGITUD_DE_LA_IP];
+        IdDeRedArray=IP.clone();
+        if(obtenerClase(IdDeRedArray)=='A'){
+            IdDeRedArray[1]=0;
+            IdDeRedArray[2]=0;
+            IdDeRedArray[3]=0;
+            DireccionIP IdDeRed=new DireccionIP(IdDeRedArray);
             return IdDeRed;
-        }else if(obtenerClase(IdDeRed)=='B'){
-            IdDeRed[2]=0;
-            IdDeRed[3]=0;
+        }else if(obtenerClase(IdDeRedArray)=='B'){
+            IdDeRedArray[2]=0;
+            IdDeRedArray[3]=0;
+            DireccionIP IdDeRed=new DireccionIP(IdDeRedArray);
             return IdDeRed;
-        }else if(obtenerClase(IdDeRed)=='C'){
-            IdDeRed[3]=0;
+        }else if(obtenerClase(IdDeRedArray)=='C'){
+            IdDeRedArray[3]=0;
+            DireccionIP IdDeRed=new DireccionIP(IdDeRedArray);
             return IdDeRed;
         }
+        DireccionIP IdDeRed=new DireccionIP(IdDeRedArray);
         return IdDeRed;
     }
 
