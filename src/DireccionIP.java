@@ -34,7 +34,7 @@ public class DireccionIP {
         String salida="";
         salida+="Dirección IP: "+IP.toString()+"\n";
         salida+="Id de Red: "+obtenerIdDeRed(IP).toString()+"\n";
-        salida+="Máscara de Red :"+toString((obtenerMascara(IP)))+"\n";
+        salida+="Máscara de Red :"+obtenerMascara(IP).toString()+"\n";
         salida+="¿Es privada?: "+"\n";
         salida+="Clase: "+obtenerClase(IP)+"\n";
         salida+="¿Id de Red?: "+"\n";
@@ -109,21 +109,25 @@ public class DireccionIP {
         return 'N';
     }
     //Método para obtener la Mascara de Red
-    private int[] obtenerMascara(int[] IP){
+    private DireccionIP obtenerMascara(int[] IP){
         if (obtenerClase(IP)=='A'){
-            int[] Mascara={255,0,0,0};
-            return Mascara;
+            int[] MascaraArray={255,0,0,0};
+            DireccionIP MascaraDeRed=new DireccionIP(MascaraArray);
+            return MascaraDeRed;
         }
         if(obtenerClase(IP)=='B'){
-            int[] Mascara={255,255,0,0};
-            return Mascara;
+            int[] MascaraArray={255,255,0,0};
+            DireccionIP MascaraDeRed=new DireccionIP(MascaraArray);
+            return MascaraDeRed;
         }
         if(obtenerClase(IP)=='C'){
-            int[] Mascara={255,255,255,0};
-            return Mascara;
+            int[] MascaraArray={255,255,255,0};
+            DireccionIP MascaraDeRed=new DireccionIP(MascaraArray);
+            return MascaraDeRed;
         }
-        int[] Mascara={0,0,0,0};
-        return Mascara;
+        int[] MascaraArray={0,0,0,0};
+        DireccionIP MascaraDeRed=new DireccionIP(MascaraArray);
+        return MascaraDeRed;
     }
 
     //Método para obtener
