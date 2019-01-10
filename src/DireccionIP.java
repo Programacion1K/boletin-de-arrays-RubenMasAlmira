@@ -48,6 +48,7 @@ public class DireccionIP {
         return Arrays.toString(IP);
     }
 
+    @Override
     public String toString(){
         String salida=IP[0]+"."+IP[1]+"."+IP[2]+"."+IP[3];
         return salida;
@@ -130,6 +131,11 @@ public class DireccionIP {
         return MascaraDeRed;
     }
 
-    //Método para obtener
+    //Método para obtener si la IP es privada o publica
+    private String obtenerPrivadaOPublica(int[] IP){
+        String salida="";
+
+        return salida;
+    }
 
 }
