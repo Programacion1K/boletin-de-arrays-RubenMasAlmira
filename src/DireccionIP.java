@@ -133,9 +133,14 @@ public class DireccionIP {
 
     //Método para obtener si la IP es privada o publica
     private String obtenerPrivadaOPublica(int[] IP){
-        String salida="";
-
-        return salida;
+        switch (obtenerClase(IP)){
+            case'A': if(IP[0]==10){
+                    return "privada";
+                }
+            break;
+            case'B':if(IP[0]==172 && IP[1]==)
+        }
+        return "pública";
     }
 
 }
