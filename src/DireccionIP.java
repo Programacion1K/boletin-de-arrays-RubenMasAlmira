@@ -138,7 +138,9 @@ public class DireccionIP {
                     return "privada";
                 }
             break;
-            case'B':if(IP[0]==172 && IP[1]==)
+            case'B':if(IP[0]==172 && IP[1]==){
+
+            }
         }
         return "pública";
     }
