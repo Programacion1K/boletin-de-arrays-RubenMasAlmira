@@ -112,7 +112,7 @@ public class DireccionIP {
                 int[] MascaraArrayClaseA={255,0,0,0};
                 DireccionIP MascaraDeRedClaseA=new DireccionIP(MascaraArrayClaseA);
                 return MascaraDeRedClaseA;
-
+                break;
             case'B':
                 int[] MascaraArrayClaseB={255,255,0,0};
                 DireccionIP MascaraDeRedClaseB=new DireccionIP(MascaraArrayClaseB);
