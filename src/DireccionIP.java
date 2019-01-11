@@ -24,7 +24,7 @@ public class DireccionIP {
 
     }
 
-//Error,la IP no sale correctamente y el método de privada o publica no funciona como debería
+//Error,la IP no sale correctamente
 
     /*  - La clase (A, B, C) a la que pertenece la IP
         - Si es una Id de Red
@@ -41,9 +41,6 @@ public class DireccionIP {
         salida+="¿Id de Red?: "+""+"\n";
         return salida;
     }
-
-
-
 
     public int[] getIP(){
         return IP;
@@ -69,30 +66,6 @@ public class DireccionIP {
         return IP;
     }
 
-    //Método para obtener la IdDeRed
-    private DireccionIP obtenerIdDeRed(int[]IP){
-        int[] IdDeRedArray = new int[LONGITUD_DE_LA_IP];
-        IdDeRedArray=IP.clone();
-        if(obtenerClase(IdDeRedArray)=='A'){
-            IdDeRedArray[1]=0;
-            IdDeRedArray[2]=0;
-            IdDeRedArray[3]=0;
-            DireccionIP IdDeRed=new DireccionIP(IdDeRedArray);
-            return IdDeRed;
-        }else if(obtenerClase(IdDeRedArray)=='B'){
-            IdDeRedArray[2]=0;
-            IdDeRedArray[3]=0;
-            DireccionIP IdDeRed=new DireccionIP(IdDeRedArray);
-            return IdDeRed;
-        }else if(obtenerClase(IdDeRedArray)=='C'){
-            IdDeRedArray[3]=0;
-            DireccionIP IdDeRed=new DireccionIP(IdDeRedArray);
-            return IdDeRed;
-        }
-        DireccionIP IdDeRed=new DireccionIP(IdDeRedArray);
-        return IdDeRed;
-    }
-
     //Método para obtener la clase
     private char obtenerClase(int[]IP){
         char clase;
@@ -105,6 +78,40 @@ public class DireccionIP {
         }
         return '.';
     }
+
+    //Método para obtener la IdDeRed
+    private DireccionIP obtenerIdDeRed(int[]IP){
+        int[] IdDeRedArray = new int[LONGITUD_DE_LA_IP];
+        IdDeRedArray=IP.clone();
+        switch (obtenerClase(IP)){
+            case'A':
+                IdDeRedArray[1]=0;
+                IdDeRedArray[2]=0;
+                IdDeRedArray[3]=0;
+                DireccionIP IdDeRedClaseA=new DireccionIP(IdDeRedArray);
+                return IdDeRedClaseA;
+
+            case'B':
+                IdDeRedArray[2]=0;
+                IdDeRedArray[3]=0;
+                DireccionIP IdDeRedClaseB=new DireccionIP(IdDeRedArray);
+                return IdDeRedClaseB;
+
+            case'C':
+                IdDeRedArray[3]=0;
+                DireccionIP IdDeRedClaseC=new DireccionIP(IdDeRedArray);
+                return IdDeRedClaseC;
+
+            default:
+                IdDeRedArray[0]=0;
+                IdDeRedArray[1]=0;
+                IdDeRedArray[2]=0;
+                IdDeRedArray[3]=0;
+                DireccionIP IdDeRedErroneo=new DireccionIP(IdDeRedArray);
+                return IdDeRedErroneo;
+        }
+    }
+
     //Método para obtener la Mascara de Red
     private DireccionIP obtenerMascara(int[] IP){
         switch (obtenerClase(IP)){
@@ -112,7 +119,7 @@ public class DireccionIP {
                 int[] MascaraArrayClaseA={255,0,0,0};
                 DireccionIP MascaraDeRedClaseA=new DireccionIP(MascaraArrayClaseA);
                 return MascaraDeRedClaseA;
-                break;
+
             case'B':
                 int[] MascaraArrayClaseB={255,255,0,0};
                 DireccionIP MascaraDeRedClaseB=new DireccionIP(MascaraArrayClaseB);
