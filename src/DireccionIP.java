@@ -2,13 +2,8 @@ import java.util.Arrays;
 
 public class DireccionIP {
 
-    /*  - La clase (A, B, C) a la que pertenece la IP
-        - Si es una Id de Red
-        - La Id de Red de esa Dirección IP
-        - La máscara de red.
-        - Si es privada o pública  */
     private static final int LONGITUD_DE_LA_IP = 4;
-    private  int[] IP = new int[LONGITUD_DE_LA_IP];
+    private int[] IP = new int[LONGITUD_DE_LA_IP];
 
     DireccionIP(int[] IP) {
         this.IP = IP;
@@ -29,23 +24,29 @@ public class DireccionIP {
 
     }
 
-//Error,los métodos de Obtener no salen como deberían
+//Error,la IP no sale correctamente y el método de privada o publica no funciona como debería
+
+    /*  - La clase (A, B, C) a la que pertenece la IP
+        - Si es una Id de Red
+        - La Id de Red de esa Dirección IP
+        - La máscara de red.
+        - Si es privada o pública  */
     public String infoIP(){
         String salida="";
         salida+="Dirección IP: "+IP.toString()+"\n";
         salida+="Id de Red: "+obtenerIdDeRed(IP).toString()+"\n";
         salida+="Máscara de Red :"+obtenerMascara(IP).toString()+"\n";
-        salida+="¿Es privada?: "+"\n";
+        salida+="¿Privada o Pública?: "+obtenerPrivadaOPublica(IP)+"\n";
         salida+="Clase: "+obtenerClase(IP)+"\n";
-        salida+="¿Id de Red?: "+"\n";
+        salida+="¿Id de Red?: "+""+"\n";
         return salida;
     }
 
 
 
 
-    public String getIP(){
-        return Arrays.toString(IP);
+    public int[] getIP(){
+        return IP;
     }
 
     @Override
@@ -53,11 +54,6 @@ public class DireccionIP {
         String salida=IP[0]+"."+IP[1]+"."+IP[2]+"."+IP[3];
         return salida;
     }
-
-
-
-
-
 
 
     //Método para convertir un String en un array de enteros
@@ -107,42 +103,53 @@ public class DireccionIP {
         }else if(IP[0]>=192 && IP[0]<=223){
             return 'C';
         }
-        return 'N';
+        return '.';
     }
     //Método para obtener la Mascara de Red
     private DireccionIP obtenerMascara(int[] IP){
-        if (obtenerClase(IP)=='A'){
-            int[] MascaraArray={255,0,0,0};
-            DireccionIP MascaraDeRed=new DireccionIP(MascaraArray);
-            return MascaraDeRed;
+        switch (obtenerClase(IP)){
+            case'A':
+                int[] MascaraArrayClaseA={255,0,0,0};
+                DireccionIP MascaraDeRedClaseA=new DireccionIP(MascaraArrayClaseA);
+                return MascaraDeRedClaseA;
+
+            case'B':
+                int[] MascaraArrayClaseB={255,255,0,0};
+                DireccionIP MascaraDeRedClaseB=new DireccionIP(MascaraArrayClaseB);
+                return MascaraDeRedClaseB;
+
+            case'C':
+                int[] MascaraArrayClaseC={255,255,255,0};
+                DireccionIP MascaraDeRedClaseC=new DireccionIP(MascaraArrayClaseC);
+                return MascaraDeRedClaseC;
+
+            default:
+                int[] MascaraArray={0,0,0,0};
+                DireccionIP MascaraDeRed=new DireccionIP(MascaraArray);
+                return MascaraDeRed;
         }
-        if(obtenerClase(IP)=='B'){
-            int[] MascaraArray={255,255,0,0};
-            DireccionIP MascaraDeRed=new DireccionIP(MascaraArray);
-            return MascaraDeRed;
-        }
-        if(obtenerClase(IP)=='C'){
-            int[] MascaraArray={255,255,255,0};
-            DireccionIP MascaraDeRed=new DireccionIP(MascaraArray);
-            return MascaraDeRed;
-        }
-        int[] MascaraArray={0,0,0,0};
-        DireccionIP MascaraDeRed=new DireccionIP(MascaraArray);
-        return MascaraDeRed;
     }
+
 
     //Método para obtener si la IP es privada o publica
     private String obtenerPrivadaOPublica(int[] IP){
         switch (obtenerClase(IP)){
-            case'A': if(IP[0]==10){
-                    return "privada";
-                }
-            break;
-            case'B':if(IP[0]==172 && IP[1]==){
-
-            }
+            case'A'://10.0.0.0-10.255.255.255
+                    if(IP[0]==10){
+                    return "Privada";
+                    }break;
+            case'B'://172.16.0.0-172.31.255.255   //172.15.5.4
+                    if(IP[0]==172 && IP[1]>16 && IP[1]<31){
+                    return "Privada";
+                    }break;
+            case'C'://192.168.0.0-192.168.255.255
+                    if(IP[0]==192 && IP[1]==168){
+                    return "Privada";
+                    }break;
+            default:
+                    return "error";
         }
-        return "pública";
+        return "Pública";
     }
 
 }
