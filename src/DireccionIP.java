@@ -33,7 +33,7 @@ public class DireccionIP {
         - Si es privada o pública  */
     public String infoIP(){
         String salida="";
-        salida+="Dirección IP: "+IP.toString()+"\n";
+        salida+="Dirección IP: "+toString()+"\n";
         salida+="Id de Red: "+obtenerIdDeRed(IP).toString()+"\n";
         salida+="Máscara de Red :"+obtenerMascara(IP).toString()+"\n";
         salida+="¿Privada o Pública?: "+obtenerPrivadaOPublica(IP)+"\n";
@@ -48,8 +48,7 @@ public class DireccionIP {
 
     @Override
     public String toString(){
-        String salida=IP[0]+"."+IP[1]+"."+IP[2]+"."+IP[3];
-        return salida;
+        return IP[0]+"."+IP[1]+"."+IP[2]+"."+IP[3];
     }
 
 
