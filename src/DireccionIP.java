@@ -38,7 +38,7 @@ public class DireccionIP {
         salida+="Máscara de Red :"+obtenerMascara(IP).toString()+"\n";
         salida+="¿Privada o Pública?: "+obtenerPrivadaOPublica(IP)+"\n";
         salida+="Clase: "+obtenerClase(IP)+"\n";
-        salida+="¿Id de Red?: "+""+"\n";
+        salida+="¿Id de Red?: "+(esIdDeRed(IP)? "Es una Id de Red":"No es una Id de red")+"\n";
         return salida;
     }
 
@@ -107,9 +107,17 @@ public class DireccionIP {
                 IdDeRedArray[1]=0;
                 IdDeRedArray[2]=0;
                 IdDeRedArray[3]=0;
-                DireccionIP IdDeRedErroneo=new DireccionIP(IdDeRedArray);
-                return IdDeRedErroneo;
+                DireccionIP IdDeRedErronea=new DireccionIP(IdDeRedArray);
+                return IdDeRedErronea;
         }
+    }
+
+    //Método para la saber si la IP dada es una Id de Red o no
+    private boolean esIdDeRed(int[] IP){
+        if(!obtenerIdDeRed(IP).equals(IP)){
+            return false;
+        }
+        return true;
     }
 
     //Método para obtener la Mascara de Red
@@ -132,8 +140,8 @@ public class DireccionIP {
 
             default:
                 int[] MascaraArray={0,0,0,0};
-                DireccionIP MascaraDeRed=new DireccionIP(MascaraArray);
-                return MascaraDeRed;
+                DireccionIP MascaraDeRedErronea=new DireccionIP(MascaraArray);
+                return MascaraDeRedErronea;
         }
     }
 
@@ -158,5 +166,7 @@ public class DireccionIP {
         }
         return "Pública";
     }
+
+
 
 }
