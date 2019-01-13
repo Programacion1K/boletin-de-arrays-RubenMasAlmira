@@ -66,7 +66,6 @@ public class DireccionIP {
     }
 
     //Método para obtener la clase
-    //todo pasar a private
     private char obtenerClase(int[]IP){
         char clase;
         if(IP[0]>=0 && IP[0]<=127){
