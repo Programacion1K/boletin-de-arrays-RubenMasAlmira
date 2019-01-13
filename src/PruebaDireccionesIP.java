@@ -21,7 +21,7 @@ public class PruebaDireccionesIP {
                 new DireccionIP(192,168,0,1),
                 new DireccionIP(192,168,0,2),
                 new DireccionIP(192,168,0,3),
-                new DireccionIP(192,168,0,4),
+                new DireccionIP(192,168,6,4),
         };
         System.out.println(DireccionIP.variasIpEnLaMismaRed(arrayDeIp));
 
