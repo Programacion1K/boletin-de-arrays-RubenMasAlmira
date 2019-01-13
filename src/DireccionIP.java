@@ -113,10 +113,10 @@ public class DireccionIP {
 
     //Método para la saber si la IP dada es una Id de Red o no
     private boolean esIdDeRed(int[] IP){
-        if(!obtenerIdDeRed(IP).equals(IP)){
-            return false;
+        if((obtenerIdDeRed(IP)).toString().equals(toString())){
+            return true;
         }
-        return true;
+        return false;
     }
 
     //Método para obtener la Mascara de Red
@@ -168,4 +168,26 @@ public class DireccionIP {
 
 
 
+
+
+    //SEGUNDA PARTE
+
+    //Método para saber si dos Ip estan en la misma red
+    public static boolean dosIpEnLaMismaRed(DireccionIP primeraIP,DireccionIP segundaIP){
+        if(((primeraIP.obtenerIdDeRed(primeraIP.getIP())).toString()).equals(segundaIP.obtenerIdDeRed(segundaIP.getIP()).toString())){
+            return true;
+        }
+        return false;
+    }
+
+    //Método para saber si todas las Ip que son pasadas en un array pertenecen a la misma red
+    public static boolean variasIpEnLaMismaRed(DireccionIP[] ip){
+        String redActual=ip[0].obtenerIdDeRed(ip[0].getIP()).toString();
+        for(int i=1;i<ip.length;i++){
+            if(!redActual.equals(ip[i].obtenerIdDeRed(ip[i].getIP()).toString())){
+                return false;
+            }
+        }
+        return true;
+    }
 }
