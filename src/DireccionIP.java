@@ -112,7 +112,7 @@ public class DireccionIP {
 
     //Método para la saber si la IP dada es una Id de Red o no
     private boolean esIdDeRed(int[] IP){
-        if((obtenerIdDeRed(IP)).toString().equals(toString())){
+        if((obtenerIdDeRed (IP)).toString().equals(toString())){
             return true;
         }
         return false;
