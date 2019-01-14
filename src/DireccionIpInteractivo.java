@@ -17,32 +17,50 @@ public class DireccionIpInteractivo {
             //Elección según la respuesta dada en la pregunta inicial
             switch (opcionParaIntroducirIP) {
                 case 0:
-                    String ipEnString = (String) JOptionPane.showInputDialog(null,
-                            "Introduzca la IP separada por puntos",
-                            "Entrada",
-                            JOptionPane.QUESTION_MESSAGE);
-                    DireccionIP ipPorString = new DireccionIP(ipEnString);
-                    JOptionPane.showMessageDialog(null,
-                            ipPorString.infoIP(),
-                            "INFORMACIÓN DE LA IP",
-                            JOptionPane.PLAIN_MESSAGE,
-                            new ImageIcon("./src/iconoIp.png"));
-                    break;
+                    try {
+                        String ipEnString = (String) JOptionPane.showInputDialog(null,
+                                "Introduzca la IP separada por puntos",
+                                "Entrada",
+                                JOptionPane.QUESTION_MESSAGE);
+                        DireccionIP ipPorString = new DireccionIP(ipEnString);
+                        JOptionPane.showMessageDialog(null,
+                                ipPorString.infoIP(),
+                                "INFORMACIÓN DE LA IP",
+                                JOptionPane.PLAIN_MESSAGE,
+                                new ImageIcon("./src/iconoIp.png"));
+                        break;
+                    }catch (java.lang.StringIndexOutOfBoundsException byteActual){
+                        JOptionPane.showMessageDialog(null,"Introducción no valida","Error",JOptionPane.ERROR_MESSAGE);
+                        break;
+                    }
+                    catch(java.lang.NullPointerException byteActual){
+                        JOptionPane.showMessageDialog(null,"Introducción no valida","Error",JOptionPane.ERROR_MESSAGE);
+                        break;
+                    }
                 case 1:
                     int[] cuatroBytes = new int[4];
-                    for (int i = 0; i < 4; i++) {
-                        int byteActual = Integer.parseInt(JOptionPane.showInputDialog(null,
-                                "Introduzca el byte:" + i,
-                                "Entrada",
-                                JOptionPane.QUESTION_MESSAGE));
-                        cuatroBytes[i] = byteActual;
-                    }
-                    DireccionIP ipEnCuatroBytes = new DireccionIP(cuatroBytes);
-                    JOptionPane.showMessageDialog(null,
-                            ipEnCuatroBytes.infoIP(),
-                            "INFORMACIÓN DE LA IP",
-                            JOptionPane.PLAIN_MESSAGE,
-                            new ImageIcon("./src/iconoIp.png"));
+
+                        try {
+                            for (int i = 0; i < 4; i++) {
+                                int byteActual = Integer.parseInt(JOptionPane.showInputDialog(null,
+                                        "Introduzca el byte:" + i,
+                                        "Entrada",
+                                        JOptionPane.QUESTION_MESSAGE));
+
+                                cuatroBytes[i] = byteActual;
+                            }
+                            DireccionIP ipEnCuatroBytes = new DireccionIP(cuatroBytes);
+                            JOptionPane.showMessageDialog(null,
+                                    ipEnCuatroBytes.infoIP(),
+                                    "INFORMACIÓN DE LA IP",
+                                    JOptionPane.PLAIN_MESSAGE,
+                                    new ImageIcon("./src/iconoIp.png"));
+                        }catch (java.lang.NumberFormatException byteActual){
+                            JOptionPane.showMessageDialog(null,"Introducción no valida","Error",JOptionPane.ERROR_MESSAGE);
+                            break;
+                        }
+
+
                     break;
                 default:
                     String[] opcionesDeSalida = {"Sí", "No"};
