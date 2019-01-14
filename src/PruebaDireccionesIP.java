@@ -8,20 +8,20 @@ public class PruebaDireccionesIP {
        DireccionIP IPConArray=new DireccionIP(IP);
        //JOptionPane.showMessageDialog(null,IPConArray.infoIP());
 
-       DireccionIP IPConString= new DireccionIP("226.13.5.4");
+       DireccionIP IPConString= new DireccionIP("11.13.5.4");
        //JOptionPane.showMessageDialog(null,IPConString.infoIP());
 
-       DireccionIP IPConEnteros=new DireccionIP(192,168,0,0);
+       DireccionIP IPConEnteros=new DireccionIP(192,162,0,0);
        //JOptionPane.showMessageDialog(null,IPConEnteros.infoIP());
 
-        //System.out.println(DireccionIP.dosIpEnLaMismaRed(IPConArray, IPConEnteros));
+        System.out.println(DireccionIP.dosIpEnLaMismaRed(IPConArray, IPConString));
 
         DireccionIP[] arrayDeIp={
                 new DireccionIP(192,168,0,0),
                 new DireccionIP(192,168,0,1),
                 new DireccionIP(192,168,0,2),
                 new DireccionIP(192,168,0,3),
-                new DireccionIP(192,168,6,4),
+                new DireccionIP(192,168,0,4),
         };
         System.out.println(DireccionIP.variasIpEnLaMismaRed(arrayDeIp));
 

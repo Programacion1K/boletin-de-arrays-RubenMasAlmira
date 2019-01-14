@@ -174,17 +174,18 @@ public class DireccionIP {
 
     //Método para saber si dos Ip estan en la misma red
     public static boolean dosIpEnLaMismaRed(DireccionIP primeraIP,DireccionIP segundaIP){
-        if(((primeraIP.obtenerIdDeRed(primeraIP.getIP())).toString()).equals(segundaIP.obtenerIdDeRed(segundaIP.getIP()).toString())){
+        if(Arrays.equals(primeraIP.obtenerIdDeRed(primeraIP.getIP()).getIP(),segundaIP.obtenerIdDeRed(segundaIP.getIP()).getIP())){
             return true;
         }
         return false;
     }
 
+
     //Método para saber si todas las Ip que son pasadas en un array pertenecen a la misma red
     public static boolean variasIpEnLaMismaRed(DireccionIP[] ip){
-        String redActual=ip[0].obtenerIdDeRed(ip[0].getIP()).toString();
+        DireccionIP redActual=ip[0].obtenerIdDeRed(ip[0].getIP());
         for(int i=1;i<ip.length;i++){
-            if(!redActual.equals(ip[i].obtenerIdDeRed(ip[i].getIP()).toString())){
+            if(!dosIpEnLaMismaRed(redActual,ip[i])){
                 return false;
             }
         }
@@ -192,7 +193,7 @@ public class DireccionIP {
     }
 
     //Método para devolver varías direcciones IP en la misma red a partir de una IP
-    public static DireccionIP[] devuelveIP(DireccionIP ip,int numeroDeIpADevolver){
+    public static DireccionIP[] devuelveIpEnLaMismaRed(DireccionIP ip,int numeroDeIpADevolver){
 
         switch (ip.obtenerClase(ip.getIP())) {
             case 'A':
